@@ -93,6 +93,21 @@ class Controller {
         .then(() => res.redirect('/'))
         .catch((err) => res.send(err))
     }
+
+    static cartCustomer(req,res) {
+        let custId = req.session.custId
+        Customer.findOne({where: {id:custId}})
+        .then((data) => {
+            res.render('cart', {data})
+        })
+        .catch((err) => res.send(err))
+    }
+
+    static cancel(req, res) {
+        let id = req.params.id
+        Cart.destroy({where:{id}})
+        .then(() => res.redirect('/cart'))
+    }
 }
 
 module.exports = Controller
