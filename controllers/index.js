@@ -23,7 +23,7 @@ class Controller {
 
         User.create(newData)
             .then((data) => res.redirect("/login"))
-            .catch(err => {
+            .catch((err) => {
                 if (err.name == "SequelizeValidationError") {
                     const errors = err.errors.map(e => e.message)
                     res.send(errors)
@@ -63,13 +63,35 @@ class Controller {
                     res.redirect('/register?error=username dan password invalid, please register')
                 }
             })
-            .catch(err => res.send(err))
+            .catch((err) => res.send(err))
     }
 
     static logout(req, res) {
         req.session.destroy()
 
         res.redirect('login?error=You are logged out.')
+    }
+
+    static productDetail(req, res) {
+        const id = req.params.id
+        Product.findByPk(id)
+        .then((data) => {
+            res.render('product-buy', {data})
+        })
+        .catch((err) => res.send(err))
+    }
+
+    static buyProduct(req, res) {
+        const id = req.params.id
+        const order = {
+            ProductId : +id,
+            CustomerId : req.session.custId,
+            quantity : +req.body.quantity,
+            status : false
+        }
+        Cart.create(order)
+        .then(() => res.redirect('/'))
+        .catch((err) => res.send(err))
     }
 }
 
