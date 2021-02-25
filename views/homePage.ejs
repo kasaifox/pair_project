@@ -3,21 +3,20 @@
 
         <table>
             <tr>
-                <th>No</th>
                 <th>Product</th>
-                <th>Description</th>
+                <th>Price</th>
                 <th>Action</th>
             </tr>
-            
+            <% data.forEach(el => { %>
                 <tr>
+                    <td><img src="<%= el.image  %>" alt="<%= el.description%>"></td>
+                    <td><%= formatPrice(el.price) %></td>
                     <td>
-                        1
+                        <a href="/buy/<%=el.id %>">Buy</a>
+                        <!-- <button onclick="location.href="/buy/<%=el.id %>">Buy</button> -->
                     </td>
-                    <td>Ini gambar</td>
-                    <td>Description</td>
-                    <td><button onclick="location.href='https://google.com';">Buy</button></td>
                 </tr>
-            
+            <% }) %>
 
         </table>
     </main>
