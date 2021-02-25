@@ -6,18 +6,16 @@
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "use_env_variable":"postgres://ptrteaymkjxyqk:5592daae34182d271e60cd9c13571b6af387c826a93c91917e3f9263646add1c@ec2-54-87-34-201.compute-1.amazonaws.com:5432/d34c5d0ac8vlqj",
+    "ssl": true,
+    "dialect": "postgres",
+    "protocol": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

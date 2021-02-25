@@ -1,4 +1,5 @@
 const { Product, Cart, Customer} = require('../models');
+const bcrypt = require('bcrypt')
 
 class Controller {
     static homePage (req, res) {
