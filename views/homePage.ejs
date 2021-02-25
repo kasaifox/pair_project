@@ -11,7 +11,10 @@
                 <tr>
                     <td><img src="<%= el.image  %>" alt="<%= el.description%>"></td>
                     <td><%= formatPrice(el.price) %></td>
-                    <td><button onclick="location.href='https://google.com';">Buy</button></td>
+                    <td>
+                        <a href="/buy/<%=el.id %>">Buy</a>
+                        <!-- <button onclick="location.href="/buy/<%=el.id %>">Buy</button> -->
+                    </td>
                 </tr>
             <% }) %>
 
