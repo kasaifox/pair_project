@@ -19,6 +19,9 @@ router.get('/logout', Controller.logout)
 router.get('/buy/:id', Controller.productDetail)
 router.post('/buy/:id', isLoggin, Controller.buyProduct)
 router.get('/cart', isLoggin, Controller.cartCustomer)
-router.get('/cancel/:id_product', isLoggin, Controller.cancel)
+router.get('/cancel/:id', isLoggin, Controller.cancel)
+router.get('/cart/edit/:id', isLoggin, Controller.edit)
+router.post('/cart/edit/:id', isLoggin, Controller.editPost)
+
 
 module.exports = router;

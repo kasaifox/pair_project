@@ -108,6 +108,31 @@ class Controller {
         Cart.destroy({where:{id}})
         .then(() => res.redirect('/cart'))
     }
+
+    static edit(req, res) {
+        let id = +req.params.id
+        let cart
+        Cart.findOne({where:{id}})
+        .then((data) => {
+            cart = data
+            return Product.findByPk(data.ProductId)
+        })
+        .then((data) => {
+            let product = data
+            res.render('editCart', {product, cart})
+        })
+        .catch((err) => res.send(err))
+    }
+
+    static editPost(req, res) {
+        let id = +req.params.id
+        let quantity = { quantity: +req.body.quantity}
+        Cart.update(quantity, {
+            where: {id}
+        })
+        .then(() => res.redirect('/cart'))
+        .catch((err) => res.send(err))
+    }
 }
 
 module.exports = Controller
