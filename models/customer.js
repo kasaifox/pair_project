@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { hashPassword } = require('../helpers/bcrypt')
 module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
     /**
@@ -9,11 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    getUserName() {
+      return `Hi! ${this.username}`
+    }
     static associate(models) {
       // define association here
       Customer.belongsToMany(models.Product, {
         through: models.Cart,
-        foreignKey: "ProductId"
+        foreignKey: "CustomerId"
       })
     }
   };
@@ -43,7 +47,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Customer',
+    modelName: 'Customer'
   });
+  Customer.beforeCreate((instance, option) => {
+    instance.password = hashPassword(instance.password)
+  })
   return Customer;
 };
