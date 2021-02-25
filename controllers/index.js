@@ -21,7 +21,7 @@ class Controller {
         const { username, email, password } = req.body
         const newData = { username, email, password }
 
-        User.create(newData)
+        Customer.create(newData)
             .then((data) => res.redirect("/login"))
             .catch((err) => {
                 if (err.name == "SequelizeValidationError") {
@@ -44,7 +44,7 @@ class Controller {
         const { username, password } = req.body
         // console.log(req.body)
 
-        User.findOne({ where: { username } })
+        Customer.findOne({ where: { username } })
             .then(cust => {
                 if (cust) {
                     const isValidPassword = bcrypt.compareSync(password, cust.password)
