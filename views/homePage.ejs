@@ -4,16 +4,18 @@
         <table>
             <tr>
                 <th>Product</th>
+                <th>Name</th>
                 <th>Price</th>
                 <th>Action</th>
             </tr>
-            <% data.forEach(el => { %>
+            <% data.forEach(e => { %>
                 <tr>
-                    <td><img src="<%= el.image  %>" alt="<%= el.description%>"></td>
-                    <td><%= formatPrice(el.price) %></td>
+                    <td><img src="<%= e.image  %>" alt="<%= e.description%>" width="500" height="500"></td>
+                    <td><%= e.name %></td>
+                    <td><%= formatPrice(e.price) %></td>
                     <td>
-                        <a href="/buy/<%=el.id %>">Buy</a>
-                        <!-- <button onclick="location.href="/buy/<%=el.id %>">Buy</button> -->
+                        <a href="/buy/<%=e.id %>">Buy</a>
+                        <button onclick="location.href='/buy/<%=e.id %>'">Buy</button>
                     </td>
                 </tr>
             <% }) %>
