@@ -11,7 +11,6 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
-                        <th>No. Transaksi</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -24,8 +23,7 @@
                             <td><%= formatPrice(e.price)%></td>
                             <td><%= e.Cart.quantity%></td>
                             <td><%= formatPrice(e.Cart.quantity * e.price)%></td>
-                            <td><%= e.Cart.id%></td>
-                            <td><%= e.Cart.status%></td>
+                            <td><%= e.Cart.status %></td>
                             <td>
                                 <a href="/cancel/<%=e.id%>"" id="cancel">cancel</a>
                                 <a href="/pay/<%=e.id%>" id="pay">Pay</a>
