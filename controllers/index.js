@@ -96,7 +96,7 @@ class Controller {
 
     static cartCustomer(req,res) {
         let custId = req.session.custId
-        Customer.findOne({where: {id:custId}})
+        Customer.findOne({where: {id:custId}, include: Product})
         .then((data) => {
             res.render('cart', {data})
         })
