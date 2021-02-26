@@ -105,7 +105,7 @@ class Controller {
     }
 
     static cancel(req, res) {
-        let id = req.params.id
+        let id = +req.params.id
         Cart.destroy({where:{id}})
         .then(() => res.redirect('/cart'))
     }
