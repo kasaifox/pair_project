@@ -76,6 +76,7 @@ class Controller {
         const id = req.params.id
         Product.findByPk(id)
         .then((data) => {
+            console.log(data)
             res.render('checkout', {data})
         })
         .catch((err) => res.send(err))

@@ -1,15 +1,16 @@
     <%- include('./partials/head.ejs') %>
         <main>
+            <form action="/cart/edit/:id" method="POST"></form>
             <div>
-                <img src="<%=data.image%>" alt="" width="500" height="500">
+                <img src="<%=product.image%>" alt="" width="500" height="500">
             </div>
 
             <div><br>
                 <h1>
-                    <%=data.name %>
+                    <%=product.name %>
                 </h1>
                 <h1>
-                    <%=formatPrice(data.price) %>
+                    <%=formatPrice(product.price) %>
                 </h1>
                 <div>
                     <label>Quantity</label>
