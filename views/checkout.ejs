@@ -1,0 +1,27 @@
+<%- include('./partials/head.ejs') %>
+        <main>
+            <form action="/buy/<%=data.id%>" method="POST">
+
+                <div>
+                    <img src="<%=data.image%>" alt="" width="400" height="400">
+                </div>
+
+                <div><br>
+                    <h1>
+                        <%=data.name %>
+                    </h1>
+                    <h1>
+                        <%=formatPrice(data.price) %>
+                    </h1>
+                    <div>
+                        <label>Quantity</label>
+                        <input type="number" name="quantity" id="quantity" min="1" value="1" />
+                    </div>
+                    <input type="submit" value="buy" />
+                </div>
+            </form>
+
+        </main>
+        </body>
+
+        </html>

@@ -1,0 +1,31 @@
+    <%- include('./partials/head.ejs') %>
+        <main>
+            <div>
+                <form action="/login" method="POST">
+                    <h4>Login</h4>
+                    <%if(errorMessage) { %>
+                        <h4 style="color: red;">
+                            <%=errorMessage%>
+                        </h4>
+                        <%}%>
+
+                            <div>
+                                <label>Username : </label>
+                                <input type="text" name="username" id="username" value=""
+                                    placeholder="username" />
+                            </div>
+
+                            <div>
+                                <label>Password : </label>
+                                <input type="text" name="password" id="password" value="" placeholder="password" />
+                            </div>
+
+                            <input type="submit" value="login" id="submit" /><br>
+                            <a href="/register" id="register"> Register for free here</a><br>
+                            <a href="/logout" id="logout" style="color: #f4701e;"> Logout</a><br>
+                </form>
+            </div>
+        </main>
+</body>
+
+</html>

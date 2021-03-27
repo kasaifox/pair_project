@@ -1,0 +1,27 @@
+<%- include('./partials/head.ejs') %>
+    <main>
+
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <% data.forEach(e => { %>
+                <tr>
+                    <td><img src="<%= e.image  %>" alt="<%= e.description%>" width="500" height="500"></td>
+                    <td><%= e.name %></td>
+                    <td><%= formatPrice(e.price) %></td>
+                    <td>
+                        <a href="/buy/<%=e.id %>">Buy</a>
+                        <button onclick="location.href='/buy/<%=e.id %>'">Buy</button>
+                    </td>
+                </tr>
+            <% }) %>
+
+        </table>
+    </main>
+    </body>
+
+    </html>
